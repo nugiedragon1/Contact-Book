@@ -1,0 +1,38 @@
+# Project: ContactBookApp
+# Makefile created by Dev-C++ 5.4.0
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = Contact.o ContactappUI.o ContactBook.o mainapp.o $(RES)
+LINKOBJ  = Contact.o ContactappUI.o ContactBook.o mainapp.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+BIN      = ContactBookApp.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Contact.o: Contact.cpp
+	$(CPP) -c Contact.cpp -o Contact.o $(CXXFLAGS)
+
+ContactappUI.o: ContactappUI.cpp
+	$(CPP) -c ContactappUI.cpp -o ContactappUI.o $(CXXFLAGS)
+
+ContactBook.o: ContactBook.cpp
+	$(CPP) -c ContactBook.cpp -o ContactBook.o $(CXXFLAGS)
+
+mainapp.o: mainapp.cpp
+	$(CPP) -c mainapp.cpp -o mainapp.o $(CXXFLAGS)
